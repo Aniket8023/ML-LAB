@@ -1,0 +1,18 @@
+1]import pandas as pd
+2]df = pd.read_csv('heart.csv')
+3]df.shape
+4]df.isnull().sum()
+5]df.dtypes
+6]#Count the number of zeros in each column
+zero_counts = (df == 0).sum()
+zero_counts
+7]#Find the mean age of patients
+mean_age = df['Age'].mean()  
+mean_age
+8]#Extract specific columns and split dataset into train (75%) and test (25%)
+selected_columns = df[['Age', 'Sex', 'ChestPain', 'RestBP', 'Chol']] 
+train_df = selected_columns.sample(frac=0.75, random_state=42) 
+test_df = selected_columns.drop(train_df.index)  
+9]# Display training and testing sets
+print("Training set:\n", train_df.head())
+print("Testing set:\n", test_df.head())
